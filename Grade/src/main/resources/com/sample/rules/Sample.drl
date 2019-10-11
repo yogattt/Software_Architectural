@@ -1,0 +1,61 @@
+package com.sample.rules
+ 
+import com.sample.DroolsTest.Student;
+
+rule "A"
+    when
+        s:Student( score<=100&&score>=90)
+    then
+        System.out.print(s.getname()+"的等级为A\n");
+end
+
+rule "B+"
+    when
+        s:Student( score<=89&&score>=87)
+    then
+        System.out.print(s.getname()+"的等级为B+\n");
+end
+
+rule "B"
+    when
+        s:Student( score<=86&&score>=80)
+    then
+        System.out.print(s.getname()+"的等级为B\n");
+end
+
+rule "C+"
+    when
+        s:Student( score<=79&&score>=77)
+    then
+        System.out.print(s.getname()+"的等级为C+\n");
+end
+
+rule "C"
+    when
+        s:Student( score<=76&&score>=70)
+    then
+        System.out.print(s.getname()+"的等级为C\n");
+end
+
+rule "D+"
+    when
+        s:Student( score<=69&&score>=67)
+    then
+        System.out.print(s.getname()+"的等级为D+\n");
+end
+
+rule "D"
+    when
+        s:Student( score<=66&&score>=60)
+    then
+        System.out.print(s.getname()+"的等级为D+\n");
+end
+
+rule "E"
+    when
+        s:Student(score<60)
+    then
+        System.out.print(s.getname()+"的等级为E+\n");
+end
+
+
