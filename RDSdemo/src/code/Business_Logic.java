@@ -1,6 +1,4 @@
 package code;
-import java.awt.List;
-import java.awt.TextArea;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -8,32 +6,19 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.sql.Array;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
 
 
-public class Business_Logic extends JFrame{
-	public void initWindow()
-	{
-		this.setSize(400, 400);
-		this.setTitle("Business_Logic");
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-		recv=new TextArea();
-		recv.setEditable(false);
-		this.add(recv);
-		init();
-		t.start();
-		this.setVisible(true);
-	}
+
+public class Business_Logic{
+	private static final long serialVersionUID = 1L;
 	public void init()
 	{
 		t = new Thread(new Runnable(){  
@@ -53,6 +38,7 @@ public class Business_Logic extends JFrame{
             }
          });
 		DAL=new Database_Access_Layer();
+		t.start();
 	}
 	public void operation(BufferedReader bufferedReader)
 	{
@@ -69,8 +55,6 @@ public class Business_Logic extends JFrame{
 			start="\'"+bufferedReader.readLine()+"\'";
 			end="\'"+bufferedReader.readLine()+"\'";
 			rs=DAL.search(context, start, end);
-			recv.append("查询内容"+context+"\n"
-			+"起止日期： "+start+" --- "+end+"\n");
 			doResult(rs);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -100,7 +84,7 @@ public class Business_Logic extends JFrame{
 	}
 	public static void main(String[] args) {
 		Business_Logic BLL=new Business_Logic ();
-		BLL.initWindow();
+		BLL.init();
 		}
 	ServerSocket socketRecive1;
 	Socket socketSend1;
@@ -109,5 +93,4 @@ public class Business_Logic extends JFrame{
     String start,end;
     ResultSet rs;
     Database_Access_Layer DAL;
-    TextArea recv;
 }

@@ -12,8 +12,8 @@ public class Database_Access_Layer {
 	{
 		try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            String url = "jdbc:sqlserver://localhost:1433;DatabaseName=EDUC;";
-            con = DriverManager.getConnection(url, "sa", "ttt0701.");
+            String url = "jdbc:sqlserver://database2.ckdivooppvdf.us-west-2.rds.amazonaws.com:1433;DatabaseName=data;";
+            con = DriverManager.getConnection(url, "admin", "ttt0701.");
         }
         catch(Exception e){
             e.printStackTrace();
@@ -24,7 +24,6 @@ public class Database_Access_Layer {
 		try {
 			Statement stmt = con.createStatement();
 			String sql = "select "+context+", 日期   "+"from data where data.日期>="+start+" and data.日期<="+end;
-			System.out.println(sql);
 			return stmt.executeQuery(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

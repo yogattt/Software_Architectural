@@ -19,10 +19,11 @@ import org.jfree.data.xy.XYDataset;
 
 public class pressentation_model {
 	ChartPanel frame1;
+	JFreeChart jfreechart;
 	public pressentation_model() {}
 	public pressentation_model(String Yname,int num,String[] name,ArrayList<ArrayList<String>> queue){
 		XYDataset xydataset = createDataset(num,name,queue);
-		JFreeChart jfreechart = ChartFactory.createTimeSeriesChart("浦发银行股票走势", "日期", Yname,xydataset, true, true, true);
+		jfreechart = ChartFactory.createTimeSeriesChart("浦发银行股票走势", "日期", Yname,xydataset, true, true, true);
 		XYPlot xyplot = (XYPlot) jfreechart.getPlot();
 		DateAxis dateaxis = (DateAxis) xyplot.getDomainAxis();
         dateaxis.setDateFormatOverride(new SimpleDateFormat("yyyy-MM-dd"));
@@ -57,7 +58,6 @@ public class pressentation_model {
 		        				Double.valueOf(queue.get(j).get(i)));
 		        	}
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 	        }
@@ -69,4 +69,8 @@ public class pressentation_model {
 	  public ChartPanel getChartPanel(){
 	    	return frame1;
 	    }
+	  public JFreeChart getjfreechart()
+	  {
+		  return jfreechart;
+	  }
 }
