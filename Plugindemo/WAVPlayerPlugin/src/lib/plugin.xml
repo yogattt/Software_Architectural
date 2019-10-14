@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin>
+    <name>WAVPlayerPlugin</name>
+    <class>com.Rengar.Plugins.WAVPlayerPlugin</class>
+    <type>WAV</type>
+</plugin>

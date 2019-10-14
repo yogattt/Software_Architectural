@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugins>
+	<plugin>
+		<name>MP3PlayerPlugin</name>
+		<jar>C:\Users\HP\Desktop\MP3Playerplugin.jar</jar>
+		<class>com.Rengar.Plugins.MP3PlayerPlugin</class>
+		<type>mp3</type>
+	</plugin>
+	<plugin>
+		<name>OGGPlayerPlugin</name>
+		<jar>C:\Users\HP\Desktop\OGGPlayerplugin.jar</jar>
+		<class>com.Rengar.Plugins.OGGPlayerPlugin</class>
+		<type>OGG</type>
+	</plugin>
+	<plugin>
+		<name>WAVPlayerPlugin</name>
+		<jar>C:\Users\HP\Desktop\WAVPlayerplugin.jar</jar>
+		<class>com.Rengar.Plugins.WAVPlayerPlugin</class>
+		<type>WAV</type>
+	</plugin>
+</plugins>
