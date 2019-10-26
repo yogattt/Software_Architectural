@@ -1,0 +1,72 @@
+<html>
+<body>
+<script>
+function SOAP()
+{
+var URL = document.getElementById("URL");
+var con=document.getElementById("context");
+var data = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
+"xmlns:code=\"http://code/\"><soapenv:Header/><soapenv:Body><code:sendEmail>"+
+"<url>"+URL.value+"</url>"+
+"<payload>"+con.value+"</payload>"+
+"</code:sendEmail></soapenv:Body></soapenv:Envelope>";
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState == 4) {
+    document.write(this.responseText);
+    document.write('<a href="/emailWeb"><button>确定</button></a>')
+  }
+});
+
+xhr.open("post", "services/emailServicePort");
+xhr.setRequestHeader("Content-Type", "application/xml");
+xhr.setRequestHeader("SOAPAction", "\"\"");
+xhr.setRequestHeader("Accept", "*/*");
+xhr.setRequestHeader("Cache-Control", "no-cache");
+
+xhr.send(data);
+}
+
+function Rest()
+{
+    var URL = document.getElementById("URL");
+    var con=document.getElementById("context");
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+    xhr.addEventListener("readystatechange", function () {
+    if (this.readyState == 4) {
+    	document.write(this.responseText);
+    	document.write('<a href="/emailWeb"><button>确定</button></a>')
+   }
+});
+xhr.open("post", "rest/RestService/send");
+xhr.setRequestHeader("Accept", "*/*");
+xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+xhr.setRequestHeader("Cache-Control", "no-cache");
+var formData ="url="+URL.value+"&"+"context="+con.value;
+xhr.send(formData);
+}
+function post()
+{
+    var radio=document.getElementById("SOAP");
+    if(radio.checked)
+        SOAP();
+    else
+        Rest();
+    
+}
+</script>
+<b>Send the email</B>
+   <h4>选择发送方式:</h4>
+<label><input name="Style" type="radio" id="SOAP" checked="checked" />SOAP </label> 
+<label><input name="Style" type="radio" id="REST" />REST </label> 
+   <h4> aim email address: </h4>
+        <input type="text" style="font-size:20px" name="address"  size="15" id="URL">
+   <h4> context: </h4>
+   <strong><textarea   style="resize:none;width:400px; height:200px;font-size:20px;"  name="context"  id="context">
+</textarea></strong>
+
+<input  type="button" style="font-size:20px"  value="send" onclick="post()" >
+</body>
+</html>
