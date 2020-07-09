@@ -14,7 +14,7 @@ public class EmailDispach {
     private  IAcsClient client;
     public EmailDispach(){ init();};
     public void init() {
-        profile = DefaultProfile.getProfile("cn-hangzhou", "LTAI4FrW3k9xRuaPumpxcGuF", "g3w0oBDL1k7yqRJSyPC1Y5dXoyjKM1");
+        profile = DefaultProfile.getProfile("cn-hangzhou", "**************", "********");
         client = new DefaultAcsClient(profile);
     }
     public boolean sendEmail(String url,String contest) {
@@ -25,9 +25,9 @@ public class EmailDispach {
             request.setAddressType(1);
             request.setReplyToAddress(true);
             request.setToAddress(url);
-            //可以给多个收件人发送邮件，收件人之间用逗号分开，批量发信建议使用BatchSendMailRequest方式
-            //request.setToAddress("邮箱1,邮箱2");
-            request.setSubject("测试");
+            //鍙互缁欏涓敹浠朵汉鍙戦�侀偖浠讹紝鏀朵欢浜轰箣闂寸敤閫楀彿鍒嗗紑锛屾壒閲忓彂淇″缓璁娇鐢˙atchSendMailRequest鏂瑰紡
+            //request.setToAddress("閭1,閭2");
+            request.setSubject("娴嬭瘯");
             request.setHtmlBody(contest);
             SingleSendMailResponse httpResponse = client.getAcsResponse(request);
             return true;
